@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Operadores JS - Interativo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>Operadores <span>JavaScript</span></h1>
+        <p>Explore as categorias e clique nos cards para ver exemplos práticos.</p>
+    </header>
+
+    <main class="container">
+        <a href="#ex-aritmeticos" class="card">
+            <div class="icon">➕</div>
+            <h2>Aritméticos</h2>
+            <ul>
+                <li><code>+</code> Adição</li>
+                <li><code>-</code> Subtração</li>
+                <li><code>*</code> Multiplicação</li>
+                <li><code>**</code> Exponenciação</li>
+            </ul>
+            <span class="click-hint">Ver exemplos →</span>
+        </a>
+
+        <a href="#ex-comparacao" class="card">
+            <div class="icon">⚖️</div>
+            <h2>Comparação</h2>
+            <ul>
+                <li><code>==</code> Igual a</li>
+                <li><code>===</code> Estrito</li>
+                <li><code>!=</code> Diferente</li>
+                <li><code>></code> Maior que</li>
+            </ul>
+            <span class="click-hint">Ver exemplos →</span>
+        </a>
+
+        <a href="#ex-logicos" class="card">
+            <div class="icon">🧠</div>
+            <h2>Lógicos</h2>
+            <ul>
+                <li><code>&&</code> E (AND)</li>
+                <li><code>||</code> Ou (OR)</li>
+                <li><code>!</code> Não (NOT)</li>
+            </ul>
+            <span class="click-hint">Ver exemplos →</span>
+        </a>
+
+        <a href="#ex-atribuicao" class="card">
+            <div class="icon">📝</div>
+            <h2>Atribuição</h2>
+            <ul>
+                <li><code>=</code> Atribuição</li>
+                <li><code>+=</code> Soma/Atribui</li>
+                <li><code>-=</code> Subtrai/Atribui</li>
+                <li><code>*=</code> Mult/Atribui</li>
+            </ul>
+            <span class="click-hint">Ver exemplos →</span>
+        </a>
+    </main>
+
+    <section class="examples-section">
+        <h2 class="section-title">Exemplos de Código</h2>
+
+        <div id="ex-aritmeticos" class="example-box">
+            <h3>Aritméticos</h3>
+            <pre><code>let soma = 10 + 5;      // 15
+let expo = 2 ** 3;     // 8 (2 ao cubo)
+let resto = 10 % 3;    // 1 (sobra da divisão)</code></pre>
+        </div>
+
+        <div id="ex-comparacao" class="example-box">
+            <h3>Comparação</h3>
+            <pre><code>console.log(5 == "5");  // true (valor igual)
+console.log(5 === "5"); // false (tipo diferente)
+console.log(10 > 5);    // true</code></pre>
+        </div>
+
+        <div id="ex-logicos" class="example-box">
+            <h3>Lógicos</h3>
+            <pre><code>let user = true;
+let admin = false;
+
+console.log(user && admin); // false (AND)
+console.log(user || admin); // true (OR)</code></pre>
+        </div>
+
+        <div id="ex-atribuicao" class="example-box">
+            <h3>Atribuição</h3>
+            <pre><code>let x = 10;
+x += 5; // Resultado: 15
+x *= 2; // Resultado: 30</code></pre>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="#" class="back-to-top">↑ Voltar ao topo</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Feito com ❤️ para desenvolvedores JavaScript</p>
+    </footer>
+
+</body>
+</html>

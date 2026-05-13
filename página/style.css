@@ -1,0 +1,336 @@
+/* Configurações Globais / Neon Palette */
+:root {
+    /* Cores de Fundo / Profundidade */
+    --bg-color: #080a10; /* Preto quase puro */
+    --bg-panel: #11141d; /* Painéis ligeiramente mais claros */
+    
+    /* Cores Nítidas (Neon Accent Colors) */
+    --neon-blue: #00f2ff; /* Ciano Elétrico */
+    --neon-pink: #ff00e6; /* Magenta Vibrante */
+    --neon-purple: #9d00ff; /* Roxo Profundo */
+    --neon-green: #00ff88; /* Verde Primavera Elétrico */
+    
+    /* Texto */
+    --text-primary: #ffffff;
+    --text-secondary: #b0b8d1;
+    
+    /* Efeitos */
+    --glow-blue: 0 0 15px rgba(0, 242, 255, 0.6);
+    --glow-pink: 0 0 15px rgba(255, 0, 230, 0.6);
+    --glow-purple: 0 0 15px rgba(157, 0, 255, 0.6);
+    --glow-green: 0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 60px 20px;
+    overflow-x: hidden; /* Evita barras de rolagem estranhas com efeitos */
+}
+
+/* Header & Glitch Effect */
+header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.glitch-wrapper {
+    display: inline-block;
+}
+
+header h1.glitch {
+    font-family: 'Major Mono Display', monospace; /* Fonte tech/estética */
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    position: relative;
+    color: var(--text-primary);
+    text-shadow: var(--glow-blue);
+}
+
+/* Efeito Glitch Simples */
+header h1.glitch::before,
+header h1.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+header h1.glitch::before {
+    color: var(--neon-pink);
+    z-index: -1;
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+header h1.glitch::after {
+    color: var(--neon-blue);
+    z-index: -2;
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-top: 15px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid de Cards */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo Base dos Cards (Neon Aesthetic) */
+.card {
+    background: var(--bg-panel);
+    border-radius: 20px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Importante para a imagem */
+    position: relative;
+}
+
+/* Efeito Hover Geral */
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Cores Específicas por Card (Bordas e Glow) */
+.card-arithmetic:hover { border-color: var(--neon-blue); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3); }
+.card-comparison:hover { border-color: var(--neon-pink); box-shadow: 0 10px 30px rgba(255, 0, 230, 0.3); }
+.card-logical:hover    { border-color: var(--neon-purple); box-shadow: 0 10px 30px rgba(157, 0, 255, 0.3); }
+.card-assignment:hover { border-color: var(--neon-green); box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3); }
+
+/* Conteiner da Imagem do Card */
+.card-image-container {
+    width: 100%;
+    height: 180px; /* Altura fixa para as imagens */
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem sem distorcer */
+    transition: transform 0.6s ease;
+}
+
+/* Zoom na imagem no hover */
+.card:hover .card-image {
+    transform: scale(1.1);
+}
+
+/* Overlay sutil na imagem */
+.card-image-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, var(--bg-panel), transparent);
+}
+
+/* Conteúdo de Texto do Card */
+.card-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-tag {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 15px;
+    align-self: flex-start;
+}
+
+.card h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.card ul {
+    list-style: none;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.card li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.click-hint {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+/* Mudar a cor do hint no hover baseado na cor do card */
+.card-arithmetic:hover .click-hint { color: var(--neon-blue); text-shadow: var(--glow-blue); }
+.card-comparison:hover .click-hint { color: var(--neon-pink); text-shadow: var(--glow-pink); }
+.card-logical:hover .click-hint    { color: var(--neon-purple); text-shadow: var(--glow-purple); }
+.card-assignment:hover .click-hint { color: var(--neon-green); text-shadow: var(--glow-green); }
+
+/* Tags Code dentro do Card */
+code {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    margin-right: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Seção de Exemplos */
+.examples-section {
+    max-width: 900px;
+    margin: 120px auto 60px;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+    color: var(--text-primary);
+    text-shadow: var(--glow-purple);
+}
+
+.example-box {
+    background: var(--bg-panel);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    scroll-margin-top: 60px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.example-box:hover {
+    transform: scale(1.01);
+}
+
+/* Bordas coloridas nítidas para os exemplos */
+.arithmetic-border { border-left: 5px solid var(--neon-blue); }
+.comparison-border { border-left: 5px solid var(--neon-pink); }
+.logical-border    { border-left: 5px solid var(--neon-purple); }
+.assignment-border { border-left: 5px solid var(--neon-green); }
+
+.example-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Cores dos Títulos de Exemplo */
+.arithmetic-border h3 { color: var(--neon-blue); }
+.comparison-border h3 { color: var(--neon-pink); }
+.logical-border h3    { color: var(--neon-purple); }
+.assignment-border h3 { color: var(--neon-green); }
+
+pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+pre code {
+    background: transparent;
+    border: none;
+    color: var(--text-primary); /* Texto do código branco para contraste */
+    font-size: 0.95rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Estilização Simples de Sintaxe nos Exemplos */
+pre code .comment { color: var(--text-secondary); opacity: 0.7; }
+pre code .keyword { color: var(--neon-pink); }
+pre code .number  { color: var(--neon-blue); }
+
+.back-to-top {
+    font-family: 'Major Mono Display', monospace;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.back-to-top:hover {
+    color: var(--neon-pink);
+    text-shadow: var(--glow-pink);
+}
+
+footer {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1.glitch { font-size: 2.5rem; }
+    .card-image-container { height: 150px; }
+    .section-title { font-size: 1.8rem; }
+}
